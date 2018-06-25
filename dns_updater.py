@@ -8,7 +8,7 @@ from ipaddress import IPv4Address, IPv6Address
 
 
 class DNSUpdater:
-    def __init__(self, server, addresses, key=None, keyalgorithm=dns.tsig.HMAC_SHA256, ttl=60):
+    def __init__(self, server, addresses, ttl=60, key=None, keyalgorithm=dns.tsig.HMAC_SHA256):
         if key:
             with open(key) as f:
                 self.keyring = dns.tsigkeyring.from_text({

@@ -55,7 +55,7 @@ def main():
         addresses.append(providers['ipv6'].get_ipv6_network())
 
     # update zones
-    updater = DNSUpdater(args.server, addresses, args.keyfile, args.ttl)
+    updater = DNSUpdater(args.server, addresses, args.ttl, args.keyfile)
     for zone in args.zones:
         updater.update_zone(zone)
 
