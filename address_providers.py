@@ -117,8 +117,11 @@ class InterfaceAddressProvider(AbstractAddressProvider):
                 if flags & 0x20:  # depcrecated flag is set
                     continue
 
-                return IPv6Interface("{}/{}".format(
-                    IPv6Address(address), prefix))
+                address = IPv6Address(address)
+                if address.is_private:
+                    continue
+
+                return IPv6Interface("{}/{}".format(address, prefix))
 
     def get_ipv6_network(self):
         return self.get_ipv6_iface().network
