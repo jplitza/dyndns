@@ -124,10 +124,10 @@ class InterfaceAddressProvider(AbstractAddressProvider):
                 return IPv6Interface("{}/{}".format(address, prefix))
 
     def get_ipv6_network(self):
-        return self.get_ipv6_iface().network
+        return getattr(self.get_ipv6_iface(), 'network', None)
 
     def get_ipv6_address(self):
-        return self.get_ipv6_iface().ip
+        return getattr(self.get_ipv6_iface(), 'ip', None)
 
 
 if __name__ == '__main__':

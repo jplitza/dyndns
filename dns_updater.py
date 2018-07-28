@@ -22,6 +22,9 @@ class DNSUpdater:
         self.ipv4addr = None
         self.ipv6net = None
         for address in addresses:
+            if not address:
+                continue
+
             if address.version == 4:
                 if self.ipv4addr:
                     raise RuntimeError("More than one IPv4 address given!")
