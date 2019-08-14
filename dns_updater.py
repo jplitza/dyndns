@@ -36,9 +36,8 @@ class DNSUpdater:
                 self.ipv6net = address
 
     def _relocate_ipv6_host(self, host):
-        return IPv6Address(
-            int(self.ipv6net.network_address) +
-            (int(self.ipv6net.hostmask) & int(host))
+        return self.ipv6net.network_address + (
+            int(self.ipv6net.hostmask) & int(host)
         )
 
     def _generate_update(self, zone):
