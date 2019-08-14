@@ -71,7 +71,7 @@ class FritzboxAddressProvider(AbstractAddressProvider):
 
         tagname = 'NewExternalIPAddress'
         m = re.search('(?<=<{0}>).*(?=</{0}>)'.format(tagname), r.text)
-        if not m:
+        if not m or not m.group(0):
             raise RuntimeError("No IP address found in response")
 
         return IPv4Address(m.group(0))
